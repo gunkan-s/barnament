@@ -14,6 +14,16 @@ import (
 func setupRouter(orm *gorm.DB) *gin.Engine {
 	r := gin.Default()
 
+	r.LoadHTMLGlob("view/html/*.html")
+	r.GET("/insert_cocktail", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
+	})
+
+	// Ping test
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong")
+	})
+
 	controller.InsertCocktailRouting(r, orm)
 
 	return r
@@ -47,11 +57,6 @@ func gormConnect() *gorm.DB {
 func main() {
 	db := gormConnect()
 	r := setupRouter(db)
-
-	r.LoadHTMLGlob("view/html/*.html")
-	r.GET("/insert_cocktail", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
-	})
 
 	r.Run(":" + os.Getenv("PORT"))
 }

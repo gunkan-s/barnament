@@ -1,11 +1,12 @@
 package controller
 
 import (
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gunkan-s/barnament/model"
 	"github.com/gunkan-s/barnament/types"
 	"github.com/jinzhu/gorm"
-	"strconv"
 )
 
 func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
@@ -30,7 +31,5 @@ func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
 		}
 
 		model.InsertCocktail(db, cocktail, base, timbers)
-
-		c.String(200, "pong")
 	})
 }
