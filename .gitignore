@@ -1,5 +1,9 @@
 # binary ignore
 main
+main.exe
+barnament
+barnament.exe
 # vender directory is project of gin's dependency
 vendor/*
+
 
