@@ -1,0 +1,5 @@
+# binary ignore
+main
+# vender directory is project of gin's dependency
+vendor/*
+
