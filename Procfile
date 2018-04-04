@@ -1,1 +1,1 @@
-web: barnament
+web: go build && barnament
