@@ -1,0 +1,83 @@
+swagger: "2.0"
+info:
+  description: "Barnament"
+  version: "0.1.0"
+  title: "Barnament API"
+  termsOfService: "localhost:8080"
+  contact:
+    email: "yomo4808@gmail.com"
+host: "localhost:8080"
+paths:
+  /insert_cocktail:
+    post:
+      consumes:
+        - multipart/form-data
+      summary: "HOST側のカクテル情報を追加する"
+      parameters:
+      - name: "cocktail-name"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "base-name"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "base-vol"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-name-1"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-vol-1"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-name-2"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-vol-2"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-name-3"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-vol-3"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-name-4"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-vol-4"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-name-5"
+        in: "formData"
+        type: "string"
+        required: true
+      -
+        name: "timber-vol-5"
+        in: "formData"
+        type: "string"
+        required: true
+      responses:
+       200:
+         description: "成功"
