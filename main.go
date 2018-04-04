@@ -45,5 +45,5 @@ func main() {
 	db := gormConnect()
 	r := setupRouter(db)
 
-	r.Run(":8080")
+	r.Run(":80")
 }
