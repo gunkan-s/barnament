@@ -23,7 +23,6 @@ func gormConnect() *gorm.DB {
 	PROTOCOL := "tcp(localhost)"
 	DBNAME := "barnament"
 
-	// "barnament:barnament@tcp(localhost)/barnament"
 	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME
 	db, err := gorm.Open(DBMS, CONNECT)
 
@@ -33,9 +32,8 @@ func gormConnect() *gorm.DB {
 
 	db.LogMode(true)
 
-	// DBエンジンを「InnoDB」に設定
 	db.Set("gorm:table_options", "ENGINE=InnoDB")
-	// マイグレーション
+
 	db.AutoMigrate(&types.Cocktail{})
 	db.AutoMigrate(&types.Base{})
 	db.AutoMigrate(&types.Timber{})

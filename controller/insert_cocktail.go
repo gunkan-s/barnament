@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gunkan-s/barnament/model"
 	"github.com/gunkan-s/barnament/types"
@@ -29,8 +28,6 @@ func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
 				Vol:      c.PostForm("timber-vol-" + index),
 			})
 		}
-
-		fmt.Printf("", base, timbers)
 
 		model.InsertCocktail(db, cocktail, base, timbers)
 
