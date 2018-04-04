@@ -18,12 +18,6 @@ func setupRouter(orm *gorm.DB) *gin.Engine {
 	r.GET("/insert_cocktail", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
 	})
-
-	// Ping test
-	r.GET("/ping", func(c *gin.Context) {
-		c.String(200, "pong")
-	})
-
 	controller.InsertCocktailRouting(r, orm)
 
 	return r

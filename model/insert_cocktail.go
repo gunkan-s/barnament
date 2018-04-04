@@ -1,6 +1,7 @@
 package model
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/gunkan-s/barnament/types"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
