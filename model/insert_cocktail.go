@@ -1,9 +1,9 @@
 package model
 
 import (
-// "github.com/gin-gonic/gin"
-// "github.com/jinzhu/gorm"
-// _ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 /*
@@ -15,7 +15,7 @@ func validateBase(base) {
 
 func validateTimber(timber) {
 }
-
-func InsertCocktail(orm, name, base, timber) {
-}
 */
+
+func InsertCocktail(gorm *gorm.DB, name string, base string, timber string) {
+}
