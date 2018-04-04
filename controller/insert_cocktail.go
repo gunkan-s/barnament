@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -29,7 +30,6 @@ func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
 				Vol:      c.PostForm("timber-vol-" + index),
 			})
 		}
-
 		model.InsertCocktail(db, cocktail, base, timbers)
 	})
 }
