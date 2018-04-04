@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gunkan-s/barnament/controller"
+	"github.com/gunkan-s/barnament/types"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -29,12 +30,22 @@ func gormConnect() *gorm.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+
+	db.LogMode(true)
+
+	// DBエンジンを「InnoDB」に設定
+	db.Set("gorm:table_options", "ENGINE=InnoDB")
+	// マイグレーション
+	db.AutoMigrate(&types.Cocktail{})
+	db.AutoMigrate(&types.Base{})
+	db.AutoMigrate(&types.Timber{})
+
 	return db
 }
 
 func main() {
-	orm := gormConnect()
-	r := setupRouter(orm)
+	db := gormConnect()
+	r := setupRouter(db)
 
 	r.Run(":8080")
 }
