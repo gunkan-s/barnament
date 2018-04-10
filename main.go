@@ -1,6 +1,8 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"os"
 )
@@ -59,6 +61,10 @@ func setupRouter() *gin.Engine {
 
 func main() {
 	r := setupRouter()
+	r.LoadHTMLGlob("view/html/*.html")
+	r.GET("/insert_cocktail", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
+	})
 	// Listen and Server in 0.0.0.0:8080
 	r.Run(":" + os.Getenv("PORT"))
 }
