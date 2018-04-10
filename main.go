@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -46,6 +47,11 @@ func gormConnect() *gorm.DB {
 func main() {
 	db := gormConnect()
 	r := setupRouter(db)
+
+	r.LoadHTMLGlob("view/html/*.html")
+	r.GET("/insert_cocktail", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
+	})
 
 	r.Run(":" + os.Getenv("PORT"))
 }
