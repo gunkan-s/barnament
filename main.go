@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 var DB = make(map[string]string)
 
-func setupr() *gin.Engine {
+func setupRouter() *gin.Engine {
 	// Disable Console Color
 	// gin.DisableConsoleColor()
 	r := gin.Default()
@@ -57,17 +58,12 @@ func setupr() *gin.Engine {
 	return r
 }
 
-type C struct {
-  Id int
-  Name string
-}
-
 func main() {
-	r := setupr()
+	r := setupRouter()
 	r.LoadHTMLGlob("view/html/*.html")
-  r.GET("/insert_cocktail", func(c *gin.Context) {
-    c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
-  })
+	r.GET("/insert_cocktail", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
+	})
 	// Listen and Server in 0.0.0.0:8080
 	r.Run(":8080")
 }
