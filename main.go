@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -24,15 +26,9 @@ func setupRouter(orm *gorm.DB) *gin.Engine {
 }
 
 func gormConnect() *gorm.DB {
-	DBMS := "mysql"
-	USER := "bar"
-	PASS := "bar"
-	PROTOCOL := "tcp(localhost)"
-	DBNAME := "barnament"
-
-	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME
-	db, err := gorm.Open(DBMS, CONNECT)
-
+	u, _ := url.Parse(os.Getenv("CLEARDB_DATABASE_URL"))
+	CONNECT := fmt.Sprintf("%s@tcp(%s:3306)%s", u.User.String(), u.Host, u.Path)
+	db, err := gorm.Open("mysql", CONNECT)
 	if err != nil {
 		panic(err.Error())
 	}
