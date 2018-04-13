@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/gunkan-s/barnament.svg?style=svg)](https://circleci.com/gh/gunkan-s/barnament)
+
 # TODO
 - サーバが持っているカクテル情報を更新する
   - 着手
