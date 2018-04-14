@@ -38,4 +38,4 @@
   unused-packages = true
 
 [metadata.heroku]
-  root-package  "github.com/gunkan-s/barnament"
+  root-package = "github.com/gunkan-s/barnament"
