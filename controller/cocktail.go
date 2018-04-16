@@ -9,8 +9,8 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
-	r.POST("/insert_cocktail", func(c *gin.Context) {
+func PostCocktail(r *gin.Engine, db *gorm.DB) func(c *gin.Context) {
+	return func(c *gin.Context) {
 		cocktail := types.Cocktail{
 			Name:        c.PostForm("cocktail-name"),
 			Description: c.PostForm("description"),
@@ -30,5 +30,6 @@ func InsertCocktailRouting(r *gin.Engine, db *gorm.DB) {
 			})
 		}
 		model.InsertCocktail(db, cocktail, base, timbers)
-	})
+
+	}
 }

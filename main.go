@@ -17,10 +17,10 @@ func setupRouter(orm *gorm.DB) *gin.Engine {
 	r := gin.Default()
 
 	r.LoadHTMLGlob("view/html/*.html")
-	r.GET("/insert_cocktail", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "insert_cocktail.html", gin.H{})
+	r.GET("/cocktail_form", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "cocktail_form.html", gin.H{})
 	})
-	controller.InsertCocktailRouting(r, orm)
+	r.POST("/cocktail", controller.PostCocktail(r, orm))
 
 	return r
 }
