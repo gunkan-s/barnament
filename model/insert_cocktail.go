@@ -6,10 +6,13 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-func InsertCocktail(db *gorm.DB, cocktail types.Cocktail, base types.Base, timbers []types.Timber) {
+type Cocktail struct{}
+
+func (c *Cocktail) Create(db *gorm.DB, cocktail types.Cocktail, base types.Base, timbers []types.Timber) error {
 	db.Create(&cocktail)
 	db.Create(&base)
 	for _, timber := range timbers {
 		db.Create(&timber)
 	}
+	return nil
 }
