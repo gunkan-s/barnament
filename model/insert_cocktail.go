@@ -8,7 +8,7 @@ import (
 
 type Cocktail struct{}
 
-func (c *Cocktail) Create(db *gorm.DB, cocktail types.Cocktail, base types.Base, timbers []types.Timber) error {
+func CreateCocktail(db *gorm.DB, cocktail types.Cocktail, base types.Base, timbers []types.Timber) error {
 	db.Create(&cocktail)
 	db.Create(&base)
 	for _, timber := range timbers {
